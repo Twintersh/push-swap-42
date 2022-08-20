@@ -20,7 +20,6 @@ SRC = ft_isalpha.c \
 		ft_memchr.c \
 		ft_memcmp.c \
 		ft_strnstr.c \
-		ft_atoi.c \
 		ft_calloc.c \
 		ft_strdup.c \
 		ft_substr.c \
@@ -55,16 +54,16 @@ CFLAGS = -Wextra -Werror -Wall
 all : $(NAME)
 
 %.o : %.c
-	$(CC) $(CFLAGS) $< -c -o $@
+	@$(CC) $(CFLAGS) $< -c -o $@
 
 $(NAME) : $(OBJ)
-	ar -rc $(NAME) $(OBJ)
+	@ar -rc $(NAME) $(OBJ)
 
 clean :
-	rm -rf *.o
+	@rm -rf *.o
 
 fclean : clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re : fclean all
 
