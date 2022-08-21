@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 17:11:15 by twinters          #+#    #+#             */
-/*   Updated: 2022/08/20 19:48:25 by twinters         ###   ########.fr       */
+/*   Updated: 2022/08/21 07:57:37 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@
 # define INT_MAX 2147483648
 
 void	error(void);
+int	nb_nombres(int ac, char **av);
 
 #endif
