@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Aug 21 06:21:46 2022
+# Make data base, printed on Mon Aug 22 16:26:00 2022
 
 # Variables
 
@@ -53,7 +53,7 @@ _ = /nfs/homes/twinters/Downloads/VSCode-linux-x64/code
 # makefile (from 'Makefile', line 6)
 CFLAGS = -Werror -Wall
 # environment
-JOURNAL_STREAM = 9:5515995
+JOURNAL_STREAM = 9:7063322
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
@@ -71,15 +71,15 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/101047/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 2144062
+MANAGERPID = 2701779
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/101047/vscode-ipc-b24112a8-71e9-4efe-b0e3-fd864847340a.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/101047/vscode-ipc-dddf11ff-bca6-4f54-a64d-ed85c4e37d76.sock
 # environment
 VSCODE_CWD = /nfs/homes/twinters/push-swap-42
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session8
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session12
 # environment
-KRB5CCNAME = FILE:/tmp/krb5cc_101047_61p8NM
+KRB5CCNAME = FILE:/tmp/krb5cc_101047_fskYxz
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -89,7 +89,7 @@ GPG_AGENT_INFO = /run/user/101047/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-SESSION_MANAGER = local/1E3.42angouleme.fr:@/tmp/.ICE-unix/2144350,unix/1E3.42angouleme.fr:/tmp/.ICE-unix/2144350
+SESSION_MANAGER = local/1E3.42angouleme.fr:@/tmp/.ICE-unix/2702060,unix/1E3.42angouleme.fr:/tmp/.ICE-unix/2702060
 # environment
 XDG_RUNTIME_DIR = /run/user/101047
 # environment
@@ -99,7 +99,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = ac763135a8cd4163bb82d1936b7428be
+INVOCATION_ID = ed5acbf9bdf445dfa3e2199ea3bf27f7
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -121,7 +121,7 @@ PWD = /nfs/homes/twinters/push-swap-42
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 2144312
+SSH_AGENT_PID = 2702022
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -135,7 +135,7 @@ VSCODE_CODE_CACHE_PATH = /nfs/homes/twinters/.config/Code/CachedData/4af164ea3a0
 # environment
 LOGNAME = twinters
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 ZSH = /nfs/homes/twinters/.oh-my-zsh
 # environment
@@ -213,11 +213,11 @@ LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/5b1effe6_6089_4b46_8c35_e9f536011262
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/d4fda3f6_c123_4ba8_af50_50d5c0178107
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.148
+GNOME_TERMINAL_SERVICE = :1.80
 # default
 SUFFIXES := 
 # environment
@@ -237,7 +237,7 @@ TERM = xterm-256color
 # environment
 DOCKER_HOST = unix:///run/user/101047/docker.sock
 # environment
-VSCODE_PID = 2155378
+VSCODE_PID = 2702468
 # variable set hash-table stats:
 # Load=114/1024=11%, Rehash=0, Collisions=8/143=6%
 
@@ -247,10 +247,10 @@ VSCODE_PID = 2155378
 
 # Directories
 
-# . (device 61, inode 61506674): 11 files, no impossibilities.
+# . (device 61, inode 61506674): 13 files, no impossibilities.
 # src (device 61, inode 65994864): 4 files, no impossibilities so far.
 
-# 15 files, no impossibilities in 2 directories.
+# 17 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -265,7 +265,7 @@ VSCODE_PID = 2155378
 src/push_swap.o: src/push_swap.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'src/push_swap'
-#  Last modified 2022-08-20 22:40:50.139940207
+#  Last modified 2022-08-21 10:50:26.759331868
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 12):
@@ -281,15 +281,15 @@ all: push_swap
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-08-20 18:23:07.959641783
 #  File has been updated.
 #  Successfully updated.
+ 
 
 # Not a target:
 src/push_swap.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-20 22:40:40.676093974
+#  Last modified 2022-08-21 08:35:02.892884914
 #  File has been updated.
 #  Successfully updated.
 
@@ -322,7 +322,7 @@ clean:
 
 push_swap: src/push_swap.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-20 22:40:50.163939817
+#  Last modified 2022-08-21 10:50:27.735316375
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 15):
@@ -337,12 +337,12 @@ push_swap: src/push_swap.o
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 26 / storage = 240 B / avg = 9 B
-# current buf: size = 8162 B / used = 240 B / count = 26 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 28 / storage = 271 B / avg = 9 B
+# current buf: size = 8162 B / used = 271 B / count = 28 / avg = 9 B
 
-# strcache performance: lookups = 45 / hit rate = 42%
+# strcache performance: lookups = 47 / hit rate = 40%
 # hash-table stats:
-# Load=26/8192=0%, Rehash=0, Collisions=2/45=4%
-# Finished Make data base on Sun Aug 21 06:21:46 2022
+# Load=28/8192=0%, Rehash=0, Collisions=2/47=4%
+# Finished Make data base on Mon Aug 22 16:26:00 2022
 
  

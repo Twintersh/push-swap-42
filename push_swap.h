@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 17:11:15 by twinters          #+#    #+#             */
-/*   Updated: 2022/08/21 07:57:37 by twinters         ###   ########.fr       */
+/*   Updated: 2022/08/22 16:27:27 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,13 @@
 # define INT_MIN -2147483648
 # define INT_MAX 2147483648
 
+typedef struct s_data
+{
+	int num;
+	struct s_data *next;
+}t_data;
+
 void	error(void);
-int	nb_nombres(int ac, char **av);
+int		nb_nombres(int ac, char **av);
 
 #endif

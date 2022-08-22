@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 17:25:03 by twinters          #+#    #+#             */
-/*   Updated: 2022/08/21 08:01:19 by twinters         ###   ########.fr       */
+/*   Updated: 2022/08/21 08:35:02 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,24 @@ int	nb_nombres(int ac, char **av)
 	int	nb_nb;
 
 	nb_nb = 0;
-	i = 0;
+	i = 1;
 	while (i < ac)
 	{
 		j = 0;
+		if (!av[i][j])
+			error();
 		while (av[i][j])
 		{
-			if (ft_isdigit(av[i][j] && (j == 0 || av[i][j - 1] == ' ')))
-				{nb_nb++;printf("%d %d %d\n", i, j, nb_nb);}
+			if (ft_isdigit(av[i][j]) && (j == 0 || av[i][j - 1] == ' '))
+				nb_nb++;
+			else if (!ft_isdigit(av[i][j]) && av[i][j] != ' ')
+				error();
 			j++;
 		}
 		i++;
 	}
+	if (!nb_nb)
+		error();
 	return (nb_nb);
 }
 
@@ -73,8 +79,8 @@ int	nb_nombres(int ac, char **av)
 // 	return (num[0] * minus);
 // }
 
-// void	error(void)
-// {
-// 	write(2, "Error\n", 6);
-// 	exit(EXIT_FAILURE);
-// }
+void	error(void)
+{
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
