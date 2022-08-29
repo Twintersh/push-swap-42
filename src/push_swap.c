@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 17:25:03 by twinters          #+#    #+#             */
-/*   Updated: 2022/08/21 08:35:02 by twinters         ###   ########.fr       */
+/*   Updated: 2022/08/29 21:33:01 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	main(int argc, char **argv)
 {
-	// int		*pile_a;
-	// char	**buff_arg;
-	// int		i;
-	int nombre = nb_nombres(argc, argv);
+	int nombre;
+	
+	nombre = nb_nombres(argc, argv);
+	while (nombre--)
 	printf("%d\n", nombre);
 	return (0);
 }
@@ -37,7 +37,7 @@ int	nb_nombres(int ac, char **av)
 			error();
 		while (av[i][j])
 		{
-			if (ft_isdigit(av[i][j]) && (j == 0 || av[i][j - 1] == ' '))
+			if (ft_isdigit(av[i][j]) && (j == 0 || av[i][j - 1] == ' ' || av[i][j - 1] == '-'))
 				nb_nb++;
 			else if (!ft_isdigit(av[i][j]) && av[i][j] != ' ')
 				error();
@@ -45,9 +45,9 @@ int	nb_nombres(int ac, char **av)
 		}
 		i++;
 	}
+	return (nb_nb);
 	if (!nb_nb)
 		error();
-	return (nb_nb);
 }
 
 // int	ft_atoi(const char *str)
