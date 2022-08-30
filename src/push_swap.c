@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 17:25:03 by twinters          #+#    #+#             */
-/*   Updated: 2022/08/29 21:33:01 by twinters         ###   ########.fr       */
+/*   Updated: 2022/08/30 13:53:33 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,42 @@
 
 int	main(int argc, char **argv)
 {
-	int nombre;
+	int		nb;
+	t_chain	*pile_a;
 	
-	nombre = nb_nombres(argc, argv);
-	while (nombre--)
-	printf("%d\n", nombre);
+	nb = nb_nombres(argc, argv);
+	pile_a = lst_new();
+	
 	return (0);
+}
+
+int	ft_atoi(const char *str)
+{
+	int	i;
+	long int	num[2];
+	int	minus;
+
+	i = 0;
+	num[0] = 0;
+	minus = 1;
+	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v'
+		|| str[i] == '\f' || str[i] == '\r')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+		if (str[i++] == '-')
+			minus *= -1;
+	while (str[i] >= 48 && str[i] <= 57)
+	{
+		num[1] = num[0] * 10 + (str[i] - 48);
+		if (num[1] < num[0])
+			error();
+		num[0] = num[1];
+		i++;
+	}
+	if (ft_isalnum(str[i]) || (minus == 1 && num[0] > INT_MAX) 
+		|| (minus == -1 && num[0] >= INT_MAX))
+		error();
+	return (num[0] * minus);
 }
 
 int	nb_nombres(int ac, char **av)
@@ -37,7 +67,8 @@ int	nb_nombres(int ac, char **av)
 			error();
 		while (av[i][j])
 		{
-			if (ft_isdigit(av[i][j]) && (j == 0 || av[i][j - 1] == ' ' || av[i][j - 1] == '-'))
+			if (ft_isdigit(av[i][j]) && (j == 0 ||
+				av[i][j - 1] == ' ' || av[i][j - 1] == '-'))
 				nb_nb++;
 			else if (!ft_isdigit(av[i][j]) && av[i][j] != ' ')
 				error();
@@ -49,35 +80,6 @@ int	nb_nombres(int ac, char **av)
 	if (!nb_nb)
 		error();
 }
-
-// int	ft_atoi(const char *str)
-// {
-// 	int	i;
-// 	long int	num[2];
-// 	int	minus;
-
-// 	i = 0;
-// 	num[0] = 0;
-// 	minus = 1;
-// 	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v'
-// 		|| str[i] == '\f' || str[i] == '\r')
-// 		i++;
-// 	if (str[i] == '+' || str[i] == '-')
-// 		if (str[i++] == '-')
-// 			minus *= -1;
-// 	while (str[i] >= 48 && str[i] <= 57)
-// 	{
-// 		num[1] = num[0] * 10 + (str[i] - 48);
-// 		if (num[1] < num[0])
-// 			error();
-// 		num[0] = num[1];
-// 		i++;
-// 	}
-// 	if (ft_isalnum(str[i]) || (minus == 1 && num[0] > INT_MAX) 
-// 		|| (minus == -1 && num[0] >= INT_MAX))
-// 		error();
-// 	return (num[0] * minus);
-// }
 
 void	error(void)
 {

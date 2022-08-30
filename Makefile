@@ -1,6 +1,6 @@
 CC = gcc
 NAME = push_swap
-SRC = src/push_swap.c
+SRC = src/push_swap.c src/lst_managing.c
 OBJ=$(SRC:.c=.o)
 LFT = lib-twinters
 CFLAGS = -Werror -Wall
