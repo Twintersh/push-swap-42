@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 17:25:03 by twinters          #+#    #+#             */
-/*   Updated: 2022/08/31 12:24:45 by twinters         ###   ########.fr       */
+/*   Updated: 2022/08/31 13:57:34 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,18 @@ int	main(int argc, char **argv)
 {
 	int		nb;
 	t_chain	*pile_a;
+	t_node	*current;
 
 	nb = nb_nombres(argc, argv);
 	pile_a = lst_new();
+	ft_printf("%d\n", nb);
 	pile_a = parsing(pile_a, argc, argv);
-	ft_printf("%d", nb);
+	current = pile_a->head;
+	while(current->next)
+	{
+		printf("%d\n", current->data);
+		current = current->next;
+	}
 	return (0);
 }
 
@@ -30,22 +37,29 @@ t_chain	*parsing(t_chain *pile_a, int ac, char **av)
 	int		k;
 	char	buff[11];
 
-	i[0] = 0;
+	i[0] = 1;
+	memset(buff, 0, 11);
+	k = 0;
 	while (av[i[0]])
 	{
 		i[1] = 0;
-		k = 0;
 		while (av[i[0]][i[1]])
 		{
-			i[1]++;
-			if (!ft_isdigit(av[i[0]][i[1]]) || av[i[0]][i[1]] == '-')
+			if (ft_isdigit(av[i[0]][i[1]]) || av[i[0]][i[1]] == '-')
+			{
 				buff[k++] = av[i[0]][i[1]];
+			}
 			else if (buff[0])
 			{
 				add_node_tail(pile_a, ft_atoi(buff));
 				memset(buff, 0, 11);
+				k = 0;
 			}
+			i[1]++;
 		}
+		k = 0;
+		memset(buff, 0, 11);
+		add_node_tail(pile_a, ft_atoi(buff));
 		i[0]++;
 	}
 	return (pile_a);

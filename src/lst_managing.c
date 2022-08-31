@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:50:34 by twinters          #+#    #+#             */
-/*   Updated: 2022/08/31 12:25:07 by twinters         ###   ########.fr       */
+/*   Updated: 2022/08/31 12:43:29 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_chain	*lst_new(void)
 
 	new = malloc(sizeof(t_chain));
 	if (!new)
-		exit(EXIT_FAILURE);
+		error();
 	new->length = 0;
 	new->tail = NULL;
 	new->head = NULL;
@@ -31,7 +31,7 @@ t_chain	*add_node_tail(t_chain *list, int data)
 
 	new = malloc(sizeof(t_node));
 	if (!new || !list)
-		exit(EXIT_FAILURE);
+		error();
 	new->next = NULL;
 	new->data = data;
 	if (list->tail != NULL)
