@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:41:30 by twinters          #+#    #+#             */
-/*   Updated: 2022/08/30 12:48:15 by twinters         ###   ########.fr       */
+/*   Updated: 2022/08/31 12:20:46 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_chain
 
 void	error(void);
 int		nb_nombres(int ac, char **av);
+t_chain	*parsing(t_chain *pile_a, int ac, char **av);
 
 // lst_managing
 

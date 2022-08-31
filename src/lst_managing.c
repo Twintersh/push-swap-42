@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:50:34 by twinters          #+#    #+#             */
-/*   Updated: 2022/08/30 12:51:46 by twinters         ###   ########.fr       */
+/*   Updated: 2022/08/31 12:25:07 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_chain	*lst_new(void)
 {
 	t_chain	*new;
+
 	new = malloc(sizeof(t_chain));
 	if (!new)
 		exit(EXIT_FAILURE);
