@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:41:30 by twinters          #+#    #+#             */
-/*   Updated: 2022/08/31 16:14:39 by twinters         ###   ########.fr       */
+/*   Updated: 2022/08/31 18:52:48 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,24 @@
 
 typedef struct s_node
 {
-		struct s_node	*next;
-		int				data;
-		struct s_node	*prev;
+	struct s_node	*next;
+	int				data;
+	struct s_node	*prev;
 }t_node;
 
 typedef struct s_chain
 {
-		struct s_node	*head;
-		struct s_node	*tail;
-		size_t			length;
+	struct s_node	*head;
+	struct s_node	*tail;
+	size_t			length;
 }t_chain;
 
 // push_swap.c
 
 void	error(void);
-int		nb_nombres(int ac, char **av);
-int	set_buff(char *s, t_chain *pile_a);
+void	check_error1(int ac, char **av);
+void	check_error2(int ac, char **av);
+int		set_buff(char *s, t_chain *pile_a);
 
 // lst_managing
 

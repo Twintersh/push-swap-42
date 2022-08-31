@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 17:25:03 by twinters          #+#    #+#             */
-/*   Updated: 2022/08/31 16:29:21 by twinters         ###   ########.fr       */
+/*   Updated: 2022/08/31 19:40:27 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	t_chain	*pile_a;
 	t_node	*current;
 
-	nb_nombres(argc, argv);
+	check_error1(argc, argv);
 	pile_a = lst_new();
 	pile_a = parsing(pile_a, argc, argv);
 	current = pile_a->head;
@@ -26,6 +26,7 @@ int	main(int argc, char **argv)
 		printf("%d\n", current->data);
 		current = current->next;
 	}
+	lst_free(&pile_a);
 	return (0);
 }
 
@@ -65,32 +66,58 @@ int	ft_atoi(const char *str)
 	return (num[0]);
 }
 
-int	nb_nombres(int ac, char **av)
+void	check_error1(int ac, char **av)
 {
-	int	i[2];
+	int	i;
+	int	j;
+
+	i = 1;
+	if (ac == 1)
+		error();
+	while (i < ac)
+	{
+		j = 0;
+		if (!av[i][j])
+			error();
+		while (av[i][j])
+		{
+			if (av[i][j] == '-')
+			{
+				if (!ft_isdigit(av[i][j + 1]) || ft_isdigit(av[i][j - 1]))
+					error();
+			}
+			else if (!ft_isdigit(av[i][j]) && av[i][j] != ' ')
+				error();
+			j++;
+		}
+		i++;
+	}
+	check_error2(ac, av);
+}
+
+void	check_error2(int ac, char **av)
+{
+	int	i;
+	int	j;
 	int	k;
 
-	k = 0;
-	i[0] = 1;
-	while (i[0] < ac)
+	i = 1;
+	while (i < ac)
 	{
-		i[1] = 0;
-		if (!av[i[0]][i[1]])
-			error();
-		while (av[i[0]][i[1]])
+		k = 0;
+		j = 0;
+		while (av[i][j])
 		{
-			if (ft_isdigit(av[i[0]][i[1]]) && (i[1] == 0 ||
-				av[i[0]][i[1] - 1] == ' ' || av[i[0]][i[1] - 1] == '-'))
+			if (ft_isdigit(av[i][j]))
 				k++;
-			else if (!ft_isdigit(av[i[0]][i[1]]) && av[i[0]][i[1]] != ' ')
-				error();
-			i[1]++;
+			if (av[i][j] == ' ')
+				k = 0;
+			j++;
 		}
-		i[0]++;
+		if (!k)
+			error();
+		i++;
 	}
-	if (!k)
-		error();
-	return (k);
 }
 
 void	error(void)

@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:50:34 by twinters          #+#    #+#             */
-/*   Updated: 2022/08/31 16:14:25 by twinters         ###   ########.fr       */
+/*   Updated: 2022/08/31 19:38:54 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,26 +52,45 @@ t_chain	*add_node_tail(t_chain *list, int data)
 
 t_chain	*parsing(t_chain *pile_a, int ac, char **av)
 {
-	int		i[2];
+	int		i;
+	int		j;
 	int		k;
 	char	buff[11];
 
-	i[0] = 1;
+	i = 1;
 	memset(buff, 0, 11);
 	k = 0;
-	while (av[i[0]])
+	while (av[i])
 	{
-		i[1] = 0;
-		while (av[i[0]][i[1]])
+		j = 0;
+		while (av[i][j])
 		{
-			if (ft_isdigit(av[i[0]][i[1]]) || av[i[0]][i[1]] == '-')
-				buff[k++] = av[i[0]][i[1]];
+			if (ft_isdigit(av[i][j]) || av[i][j] == '-')
+				buff[k++] = av[i][j];
 			else if (buff[0])
 				k = set_buff(buff, pile_a);
-			i[1]++;
+			j++;
 		}
 		k = set_buff(buff, pile_a);
-		i[0]++;
+		i++;
 	}
 	return (pile_a);
+}
+
+void	lst_free(t_chain **lst)
+{
+	t_node	*tmp;
+	t_node	*del;
+
+	if (*lst == NULL)
+		exit(EXIT_FAILURE);
+	tmp = (*lst)->head;
+	while (tmp)
+	{
+		del = tmp;
+		tmp = tmp->next;
+		free(del);
+	}
+	free(*lst);
+	*lst = NULL;
 }
