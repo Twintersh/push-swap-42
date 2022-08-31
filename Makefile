@@ -9,13 +9,17 @@ LFLAGS = L $(LFT)-lft
 all : $(NAME)
 
 %.o : %.c
-	@$(CC) $(CFLAGS) -I/src/ -c $< -o $@
+	@$(CC) $(CFLAGS) -g3 -I/src/ -c $< -o $@
 
 $(NAME) : $(OBJ)
 	@make -C $(LFT)
 	@$(CC) $(CFLAGS) $(OBJ) -L $(LFT) -lft -o $(NAME)
 
 re : fclean all
+
+debug : fclean $(OBJ)
+	@make -C $(LFT)
+	@$(CC) $(CFLAGS) -g3 $(OBJ) -L $(LFT) -lft -o $(NAME)
 
 clean :
 	@rm -rf src/*.o

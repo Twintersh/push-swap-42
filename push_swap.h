@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:41:30 by twinters          #+#    #+#             */
-/*   Updated: 2022/08/31 12:20:46 by twinters         ###   ########.fr       */
+/*   Updated: 2022/08/31 16:14:39 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "lib-twinters/libft.h"
 
 # define INT_MIN -2147483648
-# define INT_MAX 2147483648
+# define INT_MAX 2147483647
 
 typedef struct s_node
 {
@@ -39,10 +39,11 @@ typedef struct s_chain
 
 void	error(void);
 int		nb_nombres(int ac, char **av);
-t_chain	*parsing(t_chain *pile_a, int ac, char **av);
+int	set_buff(char *s, t_chain *pile_a);
 
 // lst_managing
 
+t_chain	*parsing(t_chain *pile_a, int ac, char **av);
 t_chain	*lst_new(void);
 t_chain	*add_node_tail(t_chain *list, int data);
 

@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 17:25:03 by twinters          #+#    #+#             */
-/*   Updated: 2022/08/31 13:57:34 by twinters         ###   ########.fr       */
+/*   Updated: 2022/08/31 16:29:21 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 int	main(int argc, char **argv)
 {
-	int		nb;
 	t_chain	*pile_a;
 	t_node	*current;
 
-	nb = nb_nombres(argc, argv);
+	nb_nombres(argc, argv);
 	pile_a = lst_new();
-	ft_printf("%d\n", nb);
 	pile_a = parsing(pile_a, argc, argv);
 	current = pile_a->head;
-	while(current->next)
+	while (current)
 	{
 		printf("%d\n", current->data);
 		current = current->next;
@@ -31,38 +29,11 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-t_chain	*parsing(t_chain *pile_a, int ac, char **av)
+int	set_buff(char *s, t_chain *pile_a)
 {
-	int		i[2];
-	int		k;
-	char	buff[11];
-
-	i[0] = 1;
-	memset(buff, 0, 11);
-	k = 0;
-	while (av[i[0]])
-	{
-		i[1] = 0;
-		while (av[i[0]][i[1]])
-		{
-			if (ft_isdigit(av[i[0]][i[1]]) || av[i[0]][i[1]] == '-')
-			{
-				buff[k++] = av[i[0]][i[1]];
-			}
-			else if (buff[0])
-			{
-				add_node_tail(pile_a, ft_atoi(buff));
-				memset(buff, 0, 11);
-				k = 0;
-			}
-			i[1]++;
-		}
-		k = 0;
-		memset(buff, 0, 11);
-		add_node_tail(pile_a, ft_atoi(buff));
-		i[0]++;
-	}
-	return (pile_a);
+	add_node_tail(pile_a, ft_atoi(s));
+	memset(s, 0, 11);
+	return (0);
 }
 
 int	ft_atoi(const char *str)
@@ -88,35 +59,34 @@ int	ft_atoi(const char *str)
 		num[0] = num[1];
 		i++;
 	}
-	if (ft_isdigit(str[i]) || (minus == 1 && num[0] > INT_MAX)
-		|| (minus == -1 && num[0] >= INT_MAX))
+	num[0] *= minus;
+	if (num[0] < INT_MIN || num[0] > INT_MAX)
 		error();
-	return (num[0] * minus);
+	return (num[0]);
 }
 
 int	nb_nombres(int ac, char **av)
 {
-	int	i;
-	int	j;
+	int	i[2];
 	int	k;
 
 	k = 0;
-	i = 1;
-	while (i < ac)
+	i[0] = 1;
+	while (i[0] < ac)
 	{
-		j = 0;
-		if (!av[i][j])
+		i[1] = 0;
+		if (!av[i[0]][i[1]])
 			error();
-		while (av[i][j])
+		while (av[i[0]][i[1]])
 		{
-			if (ft_isdigit(av[i][j]) && (j == 0 ||
-				av[i][j - 1] == ' ' || av[i][j - 1] == '-'))
+			if (ft_isdigit(av[i[0]][i[1]]) && (i[1] == 0 ||
+				av[i[0]][i[1] - 1] == ' ' || av[i[0]][i[1] - 1] == '-'))
 				k++;
-			else if (!ft_isdigit(av[i][j]) && av[i][j] != ' ')
+			else if (!ft_isdigit(av[i[0]][i[1]]) && av[i[0]][i[1]] != ' ')
 				error();
-			j++;
+			i[1]++;
 		}
-		i++;
+		i[0]++;
 	}
 	if (!k)
 		error();

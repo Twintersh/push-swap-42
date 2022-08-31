@@ -5,11 +5,12 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "DEBUG",
+			"name": "DEBUG_PUSH_SWAP",
 			"type": "cppdbg",
-			"preLaunchTask": "make_program",
+			"preLaunchTask": "DEBUG",
 			"request": "launch",
-			"program": "${fileDirname}/program",
+			"program": "${fileDirname}/push_swap",
+				"args": ["-22"],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],
