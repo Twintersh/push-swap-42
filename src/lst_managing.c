@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:50:34 by twinters          #+#    #+#             */
-/*   Updated: 2022/09/01 12:05:59 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/01 21:39:16 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,31 @@ t_chain	*add_node_tail(t_chain *list, int data)
 	return (list);
 }
 
+t_chain	*add_node_head(t_chain *list, int data)
+{
+	t_node	*new;
+
+	new = malloc(sizeof(t_node));
+	if (!new || !list)
+		error();
+	new->prev = NULL;
+	new->data = data;
+	if (list->head != NULL)
+	{
+		list->head->prev = new;
+		new->next = list->head;
+		list->head = new;
+	}
+	else
+	{
+		list->tail = new;
+		list->head = new;
+		new->next = NULL;
+	}
+	list->length++;
+	return (list);
+}
+
 void	lst_free(t_chain **lst)
 {
 	t_node	*tmp;
@@ -66,11 +91,4 @@ void	lst_free(t_chain **lst)
 	}
 	free(*lst);
 	*lst = NULL;
-}
-
-int	set_buff(char *s, t_chain *pile_a)
-{
-	add_node_tail(pile_a, ft_atoi(s));
-	ft_memset(s, 0, 11);
-	return (0);
 }

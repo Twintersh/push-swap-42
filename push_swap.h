@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:41:30 by twinters          #+#    #+#             */
-/*   Updated: 2022/09/01 12:13:08 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/01 21:39:10 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,32 @@ typedef struct s_chain
 
 // push_swap.c
 
-void	check_double(t_chain *lst);
+void		check_double(t_chain *lst);
+int			set_buff(char *s, t_chain *pile_a);
+void		ult_swap(t_chain *pile1, t_chain *pile2);
+void		ult_rotate(t_chain *pile1, t_chain *pile2);
+void		ult_rev_rotate(t_chain *pile1, t_chain *pile2);
 
 // lst_managing
 
-t_chain	*lst_new(void);
-t_chain	*add_node_tail(t_chain *list, int data);
-int		set_buff(char *s, t_chain *pile_a);
-void	lst_free(t_chain **lst);
+t_chain		*lst_new(void);
+t_chain		*add_node_tail(t_chain *list, int data);
+t_chain		*add_node_head(t_chain *list, int data);
+void		lst_free(t_chain **lst);
 
 // parsing.c
 
-t_chain	*parsing(t_chain *pile_a, char **av);
-int		ft_atoi(const char *str);
-void	error(void);
-void	check_error1(int ac, char **av);
-void	check_error2(int ac, char **av);
+t_chain		*parsing(t_chain *pile_a, char **av);
+int			ft_atoi(const char *str);
+void		error(void);
+void		check_error1(int ac, char **av);
+void		check_error2(int ac, char **av);
+
+// instructions.c
+
+t_chain		*swap(char c, t_chain *pile);
+t_chain		*push(char c, t_chain *src, t_chain *dst);
+t_chain		*rotate(char c, t_chain *pile);
+t_chain		*rev_rotate(char c, t_chain *pile);
 
 #endif

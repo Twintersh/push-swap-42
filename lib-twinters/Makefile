@@ -37,7 +37,8 @@ SRC = ft_isalpha.c \
 		get_next_line_utils.c \
 		ft_printf.c \
 		ft_putmore.c \
-		ft_putthings.c
+		ft_putthings.c \
+		ft_swap.c
 OBJ = $(SRC:.c=.o)
 SRCS_BONUS = ft_lstnew.c \
 		ft_lstadd_front.c \

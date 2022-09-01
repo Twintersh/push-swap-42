@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 11:40:08 by twinters          #+#    #+#             */
-/*   Updated: 2022/09/01 12:05:47 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/01 21:40:25 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_chain	*parsing(t_chain *pile_a, char **av)
 		k = set_buff(buff, pile_a);
 		i++;
 	}
+	check_double(pile_a);
 	return (pile_a);
 }
 
@@ -112,8 +113,6 @@ void	check_error2(int ac, char **av)
 		{
 			if (ft_isdigit(av[i][j]))
 				k++;
-			if (av[i][j] == ' ')
-				k = 0;
 			j++;
 		}
 		if (!k)
