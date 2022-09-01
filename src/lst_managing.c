@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:50:34 by twinters          #+#    #+#             */
-/*   Updated: 2022/08/31 19:38:54 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/01 12:05:59 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,33 +50,6 @@ t_chain	*add_node_tail(t_chain *list, int data)
 	return (list);
 }
 
-t_chain	*parsing(t_chain *pile_a, int ac, char **av)
-{
-	int		i;
-	int		j;
-	int		k;
-	char	buff[11];
-
-	i = 1;
-	memset(buff, 0, 11);
-	k = 0;
-	while (av[i])
-	{
-		j = 0;
-		while (av[i][j])
-		{
-			if (ft_isdigit(av[i][j]) || av[i][j] == '-')
-				buff[k++] = av[i][j];
-			else if (buff[0])
-				k = set_buff(buff, pile_a);
-			j++;
-		}
-		k = set_buff(buff, pile_a);
-		i++;
-	}
-	return (pile_a);
-}
-
 void	lst_free(t_chain **lst)
 {
 	t_node	*tmp;
@@ -93,4 +66,11 @@ void	lst_free(t_chain **lst)
 	}
 	free(*lst);
 	*lst = NULL;
+}
+
+int	set_buff(char *s, t_chain *pile_a)
+{
+	add_node_tail(pile_a, ft_atoi(s));
+	ft_memset(s, 0, 11);
+	return (0);
 }

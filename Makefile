@@ -1,9 +1,9 @@
 CC = gcc
 NAME = push_swap
-SRC = src/push_swap.c src/lst_managing.c
+SRC = src/push_swap.c src/lst_managing.c src/parsing.c
 OBJ=$(SRC:.c=.o)
 LFT = lib-twinters
-CFLAGS = -Werror -Wall
+CFLAGS = -Werror -Wall -Wextra
 LFLAGS = L $(LFT)-lft
 
 all : $(NAME)

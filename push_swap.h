@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:41:30 by twinters          #+#    #+#             */
-/*   Updated: 2022/08/31 18:52:48 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/01 12:13:08 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,21 @@ typedef struct s_chain
 
 // push_swap.c
 
-void	error(void);
-void	check_error1(int ac, char **av);
-void	check_error2(int ac, char **av);
-int		set_buff(char *s, t_chain *pile_a);
+void	check_double(t_chain *lst);
 
 // lst_managing
 
-t_chain	*parsing(t_chain *pile_a, int ac, char **av);
 t_chain	*lst_new(void);
 t_chain	*add_node_tail(t_chain *list, int data);
+int		set_buff(char *s, t_chain *pile_a);
+void	lst_free(t_chain **lst);
+
+// parsing.c
+
+t_chain	*parsing(t_chain *pile_a, char **av);
+int		ft_atoi(const char *str);
+void	error(void);
+void	check_error1(int ac, char **av);
+void	check_error2(int ac, char **av);
 
 #endif

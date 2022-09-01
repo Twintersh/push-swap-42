@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 17:25:03 by twinters          #+#    #+#             */
-/*   Updated: 2022/08/31 19:40:27 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/01 12:14:54 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	main(int argc, char **argv)
 
 	check_error1(argc, argv);
 	pile_a = lst_new();
-	pile_a = parsing(pile_a, argc, argv);
+	pile_a = parsing(pile_a, argv);
+	check_double(pile_a);
 	current = pile_a->head;
 	while (current)
 	{
@@ -30,98 +31,25 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-int	set_buff(char *s, t_chain *pile_a)
+void	check_double(t_chain *lst)
 {
-	add_node_tail(pile_a, ft_atoi(s));
-	memset(s, 0, 11);
-	return (0);
-}
+	t_node	*checked;
+	t_node	*tmp;
+	int		count;
 
-int	ft_atoi(const char *str)
-{
-	int			i;
-	long int	num[2];
-	int			minus;
-
-	i = 0;
-	num[0] = 0;
-	minus = 1;
-	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r')
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-		if (str[i++] == '-')
-			minus *= -1;
-	while (str[i] >= 48 && str[i] <= 57)
+	checked = lst->head;
+	while (checked)
 	{
-		num[1] = num[0] * 10 + (str[i] - 48);
-		if (num[1] < num[0])
-			error();
-		num[0] = num[1];
-		i++;
-	}
-	num[0] *= minus;
-	if (num[0] < INT_MIN || num[0] > INT_MAX)
-		error();
-	return (num[0]);
-}
-
-void	check_error1(int ac, char **av)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	if (ac == 1)
-		error();
-	while (i < ac)
-	{
-		j = 0;
-		if (!av[i][j])
-			error();
-		while (av[i][j])
+		count = 0;
+		tmp = lst->head;
+		while (tmp)
 		{
-			if (av[i][j] == '-')
-			{
-				if (!ft_isdigit(av[i][j + 1]) || ft_isdigit(av[i][j - 1]))
-					error();
-			}
-			else if (!ft_isdigit(av[i][j]) && av[i][j] != ' ')
+			if (checked->data == tmp->data)
+				count++;
+			if (count > 1)
 				error();
-			j++;
+			tmp = tmp->next;
 		}
-		i++;
+		checked = checked->next;
 	}
-	check_error2(ac, av);
-}
-
-void	check_error2(int ac, char **av)
-{
-	int	i;
-	int	j;
-	int	k;
-
-	i = 1;
-	while (i < ac)
-	{
-		k = 0;
-		j = 0;
-		while (av[i][j])
-		{
-			if (ft_isdigit(av[i][j]))
-				k++;
-			if (av[i][j] == ' ')
-				k = 0;
-			j++;
-		}
-		if (!k)
-			error();
-		i++;
-	}
-}
-
-void	error(void)
-{
-	write(2, "Error\n", 6);
-	exit(EXIT_FAILURE);
 }
