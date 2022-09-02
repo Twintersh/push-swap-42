@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:50:34 by twinters          #+#    #+#             */
-/*   Updated: 2022/09/01 21:39:16 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/02 13:05:12 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,13 @@ void	lst_free(t_chain **lst)
 	}
 	free(*lst);
 	*lst = NULL;
+}
+
+void	set_null(t_chain *pile)
+{
+	if (pile)
+	{
+		pile->head = NULL;
+		pile->tail = NULL;
+	}
 }

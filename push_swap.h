@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:41:30 by twinters          #+#    #+#             */
-/*   Updated: 2022/09/01 21:39:10 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:28:10 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_node
 {
 	struct s_node	*next;
 	int				data;
-	struct s_node	*prev;
 }t_node;
 
 typedef struct s_chain
@@ -34,6 +33,10 @@ typedef struct s_chain
 	struct s_node	*tail;
 	size_t			length;
 }t_chain;
+
+// TEST.c
+
+void	print_lst(t_chain *lst);
 
 // push_swap.c
 
@@ -64,5 +67,10 @@ t_chain		*swap(char c, t_chain *pile);
 t_chain		*push(char c, t_chain *src, t_chain *dst);
 t_chain		*rotate(char c, t_chain *pile);
 t_chain		*rev_rotate(char c, t_chain *pile);
+
+// sorting.c
+
+t_chain		*wallah_ca_trie(t_chain *pile_a);
+void		set_null(t_chain *pile);
 
 #endif
