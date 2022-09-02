@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:28 by twinters          #+#    #+#             */
-/*   Updated: 2022/09/02 15:36:40 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/01 21:40:02 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ t_chain	*push(char c, t_chain *src, t_chain *dst)
 {
 	t_node	*tmp;
 
+	if (src->head == NULL)
+		return (dst);
+	dst = add_node_head(dst, src->head->data);
+	tmp = src->head;
+	src->head = src->head->next;
+	src->head->prev = NULL;
+	free(tmp);
 	if (c == 'a')
 		write(1, "pa\n", 3);
 	else if (c == 'b')
@@ -39,14 +46,13 @@ t_chain	*rotate(char c, t_chain *pile)
 {
 	t_node	*tmp;
 
-	if (pile->length > 1)
-	{
-		tmp = pile->head->next;
-		pile->head->next = NULL;
-		pile->tail->next = pile->head;
-		pile->tail = pile->head;
-		pile->head = tmp;
-	}
+	tmp = pile->head->next;
+	pile->head->next = NULL;
+	pile->head->prev = pile->tail;
+	pile->tail->next = pile->head;
+	pile->tail = pile->head;
+	pile->head = tmp;
+	tmp->prev = NULL;
 	if (c == 'a')
 		write(1, "ra\n", 3);
 	else if (c == 'b')
@@ -58,13 +64,13 @@ t_chain	*rev_rotate(char c, t_chain *pile)
 {
 	t_node	*tmp;
 
-	if (pile->length > 1)
-	{
-		pile->tail->next = pile->head;
-		pile->head = pile->tail;
-		pile->tail = tmp;
-		tmp->next = NULL;
-	}
+	tmp = pile->tail->prev;
+	pile->tail->prev = NULL;
+	pile->tail->next = pile->head;
+	pile->head->prev = pile->tail;
+	pile->head = pile->tail;
+	pile->tail = tmp;
+	tmp->next = NULL;
 	if (c == 'a')
 		write(1, "rra\n", 4);
 	else if (c == 'b')
