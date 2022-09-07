@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:41:30 by twinters          #+#    #+#             */
-/*   Updated: 2022/09/06 13:37:20 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/07 18:14:20 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_node
 {
 	struct s_node	*next;
 	int				data;
+	int				index;
 	struct s_node	*prev;
 }t_node;
 
@@ -46,8 +47,8 @@ void		ult_rotate(t_chain *pile1, t_chain *pile2);
 // lst_managing.c
 
 t_chain		*lst_new(void);
-t_chain		*add_node_tail(t_chain *list, int data);
-t_chain		*add_node_head(t_chain *list, int data);
+t_chain		*add_node_tail(t_chain *list, int data, int index);
+t_chain		*add_node_head(t_chain *list, int data, int index);
 void		lst_free(t_chain **lst);
 
 // parsing.c
@@ -65,6 +66,12 @@ t_chain		*push(char c, t_chain *src, t_chain *dst);
 t_chain		*rotate(char c, t_chain *pile);
 t_chain		*rev_rotate(char c, t_chain *pile);
 void		ult_rev_rotate(t_chain *pile1, t_chain *pile2);
+
+// sorting.c
+
+t_chain		*set_index(t_chain *pile_a);
+int			get_bits(int len);
+void		radix(t_chain *pile_a, t_chain *pile_b);
 
 // TESTS.c
 

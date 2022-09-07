@@ -10,7 +10,7 @@
 			"preLaunchTask": "DEBUG",
 			"request": "launch",
 			"program": "${fileDirname}/./push_swap",
-				"args": ["122 55"]
+				"args": ["-146 -82 -163 17 64 219 -3 -43 39 -144"]
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],

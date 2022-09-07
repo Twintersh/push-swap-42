@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:28 by twinters          #+#    #+#             */
-/*   Updated: 2022/09/06 19:13:51 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/07 18:19:08 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ t_chain	*swap(char c, t_chain *pile)
 t_chain	*push(char c, t_chain *src, t_chain *dst)
 {
 	t_node	*tmp;
-	
+
 	if (src->head == NULL)
 		return (dst);
-	dst = add_node_head(dst, src->head->data);
+	dst = add_node_head(dst, src->head->data, src->head->index);
 	if (src->length == 1)
 	{
 		free(src->head);
@@ -39,12 +39,12 @@ t_chain	*push(char c, t_chain *src, t_chain *dst)
 	}
 	else
 	{
+		src->length--;
 		tmp = src->head;
 		src->head = src->head->next;
 		src->head->prev = NULL;
 		free(tmp);
-		src->length--;
-	}
+	} 
 	if (c == 'a')
 		write(1, "pa\n", 3);
 	else if (c == 'b')

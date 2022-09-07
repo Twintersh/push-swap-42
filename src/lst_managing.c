@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:50:34 by twinters          #+#    #+#             */
-/*   Updated: 2022/09/06 18:48:36 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/07 18:15:12 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_chain	*lst_new(void)
 	return (new);
 }
 
-t_chain	*add_node_tail(t_chain *list, int data)
+t_chain	*add_node_tail(t_chain *list, int data, int index)
 {
 	t_node	*new;
 
@@ -33,6 +33,7 @@ t_chain	*add_node_tail(t_chain *list, int data)
 	if (!new || !list)
 		error();
 	new->next = NULL;
+	new->index = index;
 	new->data = data;
 	if (list->tail != NULL)
 	{
@@ -50,7 +51,7 @@ t_chain	*add_node_tail(t_chain *list, int data)
 	return (list);
 }
 
-t_chain	*add_node_head(t_chain *list, int data)
+t_chain	*add_node_head(t_chain *list, int data, int index)
 {
 	t_node	*new;
 
@@ -59,6 +60,7 @@ t_chain	*add_node_head(t_chain *list, int data)
 		error();
 	new->prev = NULL;
 	new->data = data;
+	new->index = index;
 	if (list->head != NULL)
 	{
 		list->head->prev = new;
@@ -81,7 +83,7 @@ void	lst_free(t_chain **lst)
 	t_node	*del;
 
 	if (*lst == NULL)
-		return;
+		return ;
 	tmp = (*lst)->head;
 	while (tmp)
 	{

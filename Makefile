@@ -1,9 +1,9 @@
 CC = gcc #-fsanitize=leak
 NAME = push_swap
-SRC = src/push_swap.c src/lst_managing.c src/parsing.c src/instructions.c src/TESTS.c
+SRC = src/push_swap.c src/lst_managing.c src/parsing.c src/instructions.c src/sorting.c src/TESTS.c
 OBJ=$(SRC:.c=.o)
 LFT = lib-twinters
-CFLAGS = #-Werror -Wall -Wextra
+CFLAGS = -Werror -Wall -Wextra
 LFLAGS = L $(LFT)-lft
 
 all : $(NAME)
@@ -19,7 +19,7 @@ re : fclean all
 
 debug : fclean $(OBJ)
 	@make -C $(LFT)
-	@valgrind $(CC) $(CFLAGS) -g3 $(OBJ) -L $(LFT) -lft -o $(NAME)
+	@ $(CC) $(CFLAGS) -g3 $(OBJ) -L $(LFT) -lft -o $(NAME)
 
 clean :
 	@rm -rf src/*.o
