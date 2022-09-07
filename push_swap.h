@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:41:30 by twinters          #+#    #+#             */
-/*   Updated: 2022/09/01 21:39:10 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/06 13:37:20 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ typedef struct s_chain
 
 // push_swap.c
 
+int			main(int argc, char **argv);
 void		check_double(t_chain *lst);
 int			set_buff(char *s, t_chain *pile_a);
 void		ult_swap(t_chain *pile1, t_chain *pile2);
 void		ult_rotate(t_chain *pile1, t_chain *pile2);
-void		ult_rev_rotate(t_chain *pile1, t_chain *pile2);
 
-// lst_managing
+// lst_managing.c
 
 t_chain		*lst_new(void);
 t_chain		*add_node_tail(t_chain *list, int data);
@@ -64,5 +64,11 @@ t_chain		*swap(char c, t_chain *pile);
 t_chain		*push(char c, t_chain *src, t_chain *dst);
 t_chain		*rotate(char c, t_chain *pile);
 t_chain		*rev_rotate(char c, t_chain *pile);
+void		ult_rev_rotate(t_chain *pile1, t_chain *pile2);
+
+// TESTS.c
+
+void	print_lst(t_chain *lst);
+void	wallah_ca_trie(t_chain *pile_a, t_chain *pile_b);
 
 #endif

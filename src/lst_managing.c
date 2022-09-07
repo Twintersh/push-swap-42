@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:50:34 by twinters          #+#    #+#             */
-/*   Updated: 2022/09/01 21:39:16 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/06 18:48:36 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	lst_free(t_chain **lst)
 	t_node	*del;
 
 	if (*lst == NULL)
-		exit(EXIT_FAILURE);
+		return;
 	tmp = (*lst)->head;
 	while (tmp)
 	{
