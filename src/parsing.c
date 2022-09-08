@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 11:40:08 by twinters          #+#    #+#             */
-/*   Updated: 2022/09/01 21:40:25 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/08 22:26:55 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,32 @@ t_chain	*parsing(t_chain *pile_a, char **av)
 {
 	int		i;
 	int		j;
-	int		k;
-	char	buff[11];
+	char	**buff;
 
 	i = 1;
-	ft_memset(buff, 0, 11);
-	k = 0;
+	buff = NULL;
 	while (av[i])
 	{
 		j = 0;
-		while (av[i][j])
+		if (av[i][0])
+			buff = ft_split(av[i], ' ');
+		while (buff[j])
 		{
-			if (ft_isdigit(av[i][j]) || av[i][j] == '-')
-				buff[k++] = av[i][j];
-			else if (buff[0])
-				k = set_buff(buff, pile_a);
+			if (buff[j][0])
+				add_node_tail(pile_a, ft_atoi(buff[j], pile_a), -1);
 			j++;
 		}
-		k = set_buff(buff, pile_a);
+		j = 0;
+		while (buff[j])
+			free(buff[j++]);
+		free(buff);
 		i++;
 	}
 	check_double(pile_a);
 	return (pile_a);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *str, t_chain *lst)
 {
 	int			i;
 	long int	num[2];
@@ -59,13 +60,13 @@ int	ft_atoi(const char *str)
 	{
 		num[1] = num[0] * 10 + (str[i] - 48);
 		if (num[1] < num[0])
-			error();
+			error("Error\n", &lst);
 		num[0] = num[1];
 		i++;
 	}
 	num[0] *= minus;
 	if (num[0] < INT_MIN || num[0] > INT_MAX)
-		error();
+		error("Error\n", &lst);
 	return (num[0]);
 }
 
@@ -76,21 +77,21 @@ void	check_error1(int ac, char **av)
 
 	i = 1;
 	if (ac == 1)
-		error();
+		error("Error\n", NULL);
 	while (i < ac)
 	{
 		j = 0;
 		if (!av[i][j])
-			error();
+			error("Error\n", NULL);
 		while (av[i][j])
 		{
-			if (av[i][j] == '-')
+			if (av[i][j] == '-' || av[i][j] == '+')
 			{
 				if (!ft_isdigit(av[i][j + 1]) || ft_isdigit(av[i][j - 1]))
-					error();
+					error("Error\n", NULL);
 			}
 			else if (!ft_isdigit(av[i][j]) && av[i][j] != ' ')
-				error();
+				error("Error\n", NULL);
 			j++;
 		}
 		i++;
@@ -116,13 +117,15 @@ void	check_error2(int ac, char **av)
 			j++;
 		}
 		if (!k)
-			error();
+			error("Error\n", NULL);
 		i++;
 	}
 }
 
-void	error(void)
+void	error(char *c, t_chain **lst)
 {
-	write(2, "Error\n", 6);
+	write(2, c, ft_strlen(c));
+	if (lst)
+		lst_free(lst);
 	exit(EXIT_FAILURE);
 }

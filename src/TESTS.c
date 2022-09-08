@@ -6,12 +6,12 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:46:55 by twinters          #+#    #+#             */
-/*   Updated: 2022/09/07 17:49:44 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:56:05 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // DONT FORGET TO DELETE THAT FILE FROM THE MAKEFILE BEFORE PUSHING THE REPO
-	
+
 #include "../push_swap.h"
 
 // int main()
@@ -48,34 +48,34 @@
 // 	}
 // }
 
-void	print_lst(t_chain *lst)
-{
-	t_node	*cur;
+// void	print_lst(t_chain *lst)
+// {
+// 	t_node	*cur;
 
-	cur = lst->head;
-	while (cur)
-	{
-		ft_printf("%d\n", cur->data);
-		cur = cur->next;
-	}
-}
+// 	cur = lst->head;
+// 	while (cur)
+// 	{
+// 		ft_printf("%d\n", cur->data);
+// 		cur = cur->next;
+// 	}
+// }
 
-void	wallah_ca_trie(t_chain *pile_a, t_chain *pile_b)
-{
-	int	min;
+// void	wallah_ca_trie(t_chain *pile_a, t_chain *pile_b)
+// {
+// 	int	min;
 
-	min = INT_MAX;
-	while (pile_a->head != NULL)
-	{
-		if (pile_a->head->data < min)
-			min = pile_a->head->data;
-		else if (min == pile_a->head->data)
-		{
-			push('b', pile_a, pile_b);
-			min = INT_MAX;
-		}
-		rotate('a', pile_a);
-	}
-	while (pile_b->head != NULL)
-		push('a', pile_b, pile_a);
-}
+// 	min = INT_MAX;
+// 	while (pile_a->head != NULL)
+// 	{
+// 		if (pile_a->head->data < min)
+// 			min = pile_a->head->data;
+// 		else if (min == pile_a->head->data)
+// 		{
+// 			push("pb\n", pile_a, pile_b);
+// 			min = INT_MAX;
+// 		}
+// 		rotate("ra\n", pile_a);
+// 	}
+// 	while (pile_b->head != NULL)
+// 		push("pa\n", pile_b, pile_a);
+// }

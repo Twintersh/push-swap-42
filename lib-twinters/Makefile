@@ -52,22 +52,27 @@ SRCS_BONUS = ft_lstnew.c \
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 CFLAGS = -Wextra -Werror -Wall
 
+GREEN = \033[0;32m
+RED = \033[0;31m
+
 all : $(NAME)
+	echo "$(GREEN)libft compiled"
 
 %.o : %.c
-	@$(CC) $(CFLAGS) $< -c -o $@
+	$(CC) $(CFLAGS) $< -c -o $@
 
 $(NAME) : $(OBJ)
-	@ar -rc $(NAME) $(OBJ)
+	ar -rc $(NAME) $(OBJ)
 
 clean :
-	@rm -rf *.o
+	rm -rf *.o
 
 fclean : clean
-	@rm -rf $(NAME)
+	rm -rf $(NAME)
 
 re : fclean all
 
 bonus : $(OBJS_BONUS)
 	ar -rc $(NAME) $(OBJS_BONUS)
 
+.SILENT :

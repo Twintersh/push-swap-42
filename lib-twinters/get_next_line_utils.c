@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 17:41:03 by twinters          #+#    #+#             */
-/*   Updated: 2022/05/31 13:01:26 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/08 12:26:23 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,6 @@ char	*ft_strjoingnl(char *s2, char *s1)
 	}
 	ft_free(s2);
 	return (new_str);
-}
-
-int	ft_strlen(const char *str)
-{
-	int	i;
-
-	if (!str)
-		return (0);
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
 }
 
 int	istherebackn(const char *str, int z)

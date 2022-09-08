@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:41:04 by twinters          #+#    #+#             */
-/*   Updated: 2022/09/01 14:41:43 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/08 22:03:10 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int		ft_strlen(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
-int		ft_atoi(const char *str);
 void	*ft_memset(void *s, int c, size_t n);
 char	*ft_strrchr(const char *s, int c);
 void	*ft_calloc(size_t nmemb, size_t size);
@@ -100,7 +99,6 @@ int		ft_putunbr(unsigned int nb);
 
 char	*get_next_line(int fd);
 char	*ft_strjoingnl(char *s1, char *s2);
-int		ft_strlen(const char *str);
 int		istherebackn(const char *str, int rd);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_bzero(void *s, size_t n);
