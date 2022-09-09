@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 17:25:03 by twinters          #+#    #+#             */
-/*   Updated: 2022/09/08 22:18:16 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:43:36 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,15 @@
 
 int	main(int argc, char **argv)
 {
-	t_chain	*pile_a;
-	t_chain	*pile_b;
+	t_piles	*pile;
 
 	check_error1(argc, argv);
-	pile_a = lst_new();
-	pile_b = lst_new();
-	pile_a = parsing(pile_a, argv);
-	pile_a = set_index(pile_a);
-	radix(pile_a, pile_b);
-	lst_free(&pile_a);
-	lst_free(&pile_b);
+	pile->a = lst_new();
+	pile->b = lst_new();
+	pile->a = parsing(pile, argv);
+	pile->b = set_index(pile->a);
+	radix(pile->a, pile->b);
+	lst_free(&pilex);
 	return (0);
 }
 
@@ -34,6 +32,8 @@ void	check_double(t_chain *lst)
 	t_node	*tmp;
 	int		count;
 
+	if (!lst)
+		return ;
 	checked = lst->head;
 	while (checked)
 	{

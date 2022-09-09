@@ -6,13 +6,13 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 11:40:08 by twinters          #+#    #+#             */
-/*   Updated: 2022/09/08 22:26:55 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/09 12:57:47 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_chain	*parsing(t_chain *pile_a, char **av)
+t_chain	*parsing(t_piles *pile, char **av)
 {
 	int		i;
 	int		j;
@@ -28,7 +28,7 @@ t_chain	*parsing(t_chain *pile_a, char **av)
 		while (buff[j])
 		{
 			if (buff[j][0])
-				add_node_tail(pile_a, ft_atoi(buff[j], pile_a), -1);
+				add_node_tail(pile->a, ft_atoi(buff[j], pile), -1);
 			j++;
 		}
 		j = 0;
@@ -37,11 +37,11 @@ t_chain	*parsing(t_chain *pile_a, char **av)
 		free(buff);
 		i++;
 	}
-	check_double(pile_a);
-	return (pile_a);
+	check_double(pile->a);
+	return (pile->a);
 }
 
-int	ft_atoi(const char *str, t_chain *lst)
+int	ft_atoi(const char *str, t_piles *pile)
 {
 	int			i;
 	long int	num[2];
@@ -60,13 +60,13 @@ int	ft_atoi(const char *str, t_chain *lst)
 	{
 		num[1] = num[0] * 10 + (str[i] - 48);
 		if (num[1] < num[0])
-			error("Error\n", &lst);
+			error("Error\n", NULL);
 		num[0] = num[1];
 		i++;
 	}
 	num[0] *= minus;
 	if (num[0] < INT_MIN || num[0] > INT_MAX)
-		error("Error\n", &lst);
+		error("Error\n", NULL);
 	return (num[0]);
 }
 
@@ -125,7 +125,7 @@ void	check_error2(int ac, char **av)
 void	error(char *c, t_chain **lst)
 {
 	write(2, c, ft_strlen(c));
-	if (lst)
+	if (lst && *lst)
 		lst_free(lst);
 	exit(EXIT_FAILURE);
 }

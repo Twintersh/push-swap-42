@@ -1,9 +1,9 @@
 CC = gcc #-fsanitize=leak
 NAME = push_swap
-SRC = src/push_swap.c src/lst_managing.c src/parsing.c src/instructions.c src/sorting.c src/TESTS.c
+SRC = src/main.c src/lst_managing.c src/parsing.c src/instructions.c src/sorting.c src/TESTS.c
 OBJ=$(SRC:.c=.o)
 LFT = lib-twinters
-CFLAGS = -Werror -Wall -Wextra -g3
+CFLAGS = #-Werror -Wall -Wextra -g3
 LFLAGS = L $(LFT)-lft
 
 GREEN = \033[0;32m

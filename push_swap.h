@@ -6,7 +6,7 @@
 /*   By: twinters <twinters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:41:30 by twinters          #+#    #+#             */
-/*   Updated: 2022/09/08 22:24:51 by twinters         ###   ########.fr       */
+/*   Updated: 2022/09/09 12:58:39 by twinters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
+
 
 typedef struct s_node
 {
@@ -36,7 +37,13 @@ typedef struct s_chain
 	size_t			length;
 }t_chain;
 
-// push_swap.c
+typedef struct s_piles
+{
+	struct s_chain	*a;
+	struct s_chain	*b;
+}t_piles;
+
+// main.c
 
 int			main(int argc, char **argv);
 void		check_double(t_chain *lst);
@@ -53,8 +60,8 @@ void		lst_free(t_chain **lst);
 
 // parsing.c
 
-t_chain		*parsing(t_chain *pile_a, char **av);
-int			ft_atoi(const char *str, t_chain *lst);
+t_chain		*parsing(t_piles *pile, char **av);
+int			ft_atoi(const char *str, t_piles*);
 void		error(char *c, t_chain **lst);
 void		check_error1(int ac, char **av);
 void		check_error2(int ac, char **av);
